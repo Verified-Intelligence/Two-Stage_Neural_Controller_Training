@@ -1,0 +1,20 @@
+(declare-const X_0 Real)
+(declare-const X_1 Real)
+(declare-const Y_0 Real)
+(declare-const Y_1 Real)
+
+; Input constraints.
+
+; Input state 0.
+(assert (<= X_0 4.8))
+(assert (>= X_0 -4.8))
+
+; Input state 1.
+(assert (<= X_1 10.8))
+(assert (>= X_1 -10.8))
+
+; Lyapunov condition.
+
+(assert (<= Y_0 0.989))
+(assert (>= Y_0 0.0106))
+(assert (>= Y_1 0))

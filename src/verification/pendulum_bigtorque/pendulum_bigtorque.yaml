@@ -1,0 +1,39 @@
+general:
+  conv_mode: matrix
+  enable_incomplete_verification: false
+  root_path: ${CONFIG_PATH}
+  csv_name: ../../verification/pendulum_bigtorque/specs.csv
+model:
+  name: >-
+    Customized("../../verification_loss.py", "create_verification_loss", dynamics_name="pendulum_bigtorque")
+  path: ../../../models/pendulum/bigtorque/finetune/seed_0.pth
+  input_shape: [-1, 2]
+  with_jacobian: True
+attack:
+  pgd_order: skip
+  pgd_restarts: 10000
+  pgd_steps: 1000
+  pgd_alpha: 0.001
+  pgd_alpha_scale: True
+solver:
+  batch_size: 60000
+  min_batch_size_ratio: 0.
+  bound_prop_method: crown
+  crown:
+    mul_middle: True
+bab:
+  override_timeout: 100000000
+  decision_thresh: -1.e-6  # Tolerance. Must not be exact zero.
+  branching:
+    method: sb  # Can be "naive" or "sb". "sb" is usually better.
+    input_split:
+      enable: True
+      ibp_enhancement: True
+      compare_with_old_bounds: True
+      adv_check: -1
+      sb_coeff_thresh: 0.1  # Hyperparameter for "sb". Sometimes larger values like 0.01, 0.1 work better.
+      sb_primary_spec: 2
+      enable_clip_domains: True
+      reorder_bab: True
+      # show_progress: True
+
