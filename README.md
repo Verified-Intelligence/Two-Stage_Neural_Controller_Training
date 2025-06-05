@@ -1,5 +1,7 @@
 # Two-Stage Learning of Stabilizing Neural Controllers via Zubov Sampling and Iterative Domain Expansion
 
+[![Arxiv](https://img.shields.io/badge/arXiv-2506.01356-B31B1B.svg?logo=arxiv)](https://arxiv.org/abs/2506.01356)
+
 Our work studies the synthesis of neural controllers with better stability guarantees for continuous-time systems. We propose a novel two-stage training framework to jointly synthesize the controller and Lyapunov function for continuous-time systems. By leveraging a Zubov‑inspired region of attraction characterization to directly estimate stability boundaries, we propose a novel training data sampling strategy and a domain updating mechanism that significantly reduces the conservatism in training. Moreover, we extend the state-of-the-art neural network verifiers [`alpha-beta-CROWN`](https://abcrown.org) with the capability of efficiently handling the Jacobian of many previous unsupported operators and propose a novel verification scheme that avoid expensive bisection. We show that our training can yield a region of attraction with volume $5 - 1.5\cdot 10^{5}$ times larger compared to the baseline, and our verification on continuous systems can be up to $40-10000$ times faster compared to the traditional SMT solver dReal.
 
 ## Setup
