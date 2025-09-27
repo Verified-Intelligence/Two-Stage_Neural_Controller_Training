@@ -1,20 +1,20 @@
 export PYTHONPATH="${PYTHONPATH}:$(pwd)"
-export CUDA_VISIBLE_DEVICES=0
+export CUDA_VISIBLE_DEVICES=3
 
 # ------------------------- ROA Estimation ---------------------------------
 # Van Der Pol
-python src/train.py --system "van" --save_dir './van/pretrain/seed_4' \
---mode 'learnable' --learning_rate 0.0001 --max_iter 3000 --batch_size 128 --candidate_size 640 \
---lyapunov_thershold 0.99 --log_interval 10 --update_interval 100 --save_interval 200 --traj_dt 0.01 --traj_steps 8000 --seed 4
+# python src/train.py --system "van" --save_dir './van/pretrain/seed_4' \
+# --mode 'learnable' --learning_rate 0.0001 --max_iter 3000 --batch_size 128 --candidate_size 640 \
+# --lyapunov_thershold 0.99 --log_interval 10 --update_interval 100 --save_interval 200 --traj_dt 0.01 --traj_steps 8000 --seed 4
 
 # Cartpole
-# python src/train_traj_nonsym.py --system "cartpole" \
-# --save_dir './models/final_results/cartpole/pretrain/' \
-# --mode 'learnable' --learning_rate 0.0001 --max_iter 5000 --batch_size 256 --bdry_ratio 2 --lyapunov_thershold 0.95 \
-# --update_interval 500 --save_interval 500 --log_interval 10 --candidate_size 1500 --num_trajectories 3000
+python src/train.py --system "cartpole" \
+--save_dir './cartpole/pretrain/' \
+--mode 'learnable' --learning_rate 0.0001 --max_iter 5000 --batch_size 256 --bdry_ratio 2 --lyapunov_thershold 0.95 \
+--update_interval 500 --save_interval 500 --log_interval 10 --candidate_size 1500 --num_trajectories 3000 --seed 0
 
 # PVTOL
-# python src/train_traj_nonsym.py --system "pvtol" \
+# python src/train.py --system "pvtol" \
 # --save_dir './models/final_results/pvtol/pretrain/' \
 # --mode 'learnable' --learning_rate 0.0001 --max_iter 12000 --batch_size 128 --bdry_ratio 2 --lyapunov_thershold 0.9 \
 # --update_interval 1000 --save_interval 1000 --log_interval 100 --traj_dt 0.0003 --traj_steps 200000 \

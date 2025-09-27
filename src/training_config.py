@@ -132,7 +132,7 @@ configs['cartpole'] = SystemConfig(
     controller    = loss.Controller([4, 32, 32, 1], _d.x_equilibrium, _d.u_equilibrium, scale=30.0),
     lyapunov      = loss.Lyapunov([4, 128, 128, 1]),
     factor_list = [1.0],
-    scale_vector = [2.4, 2.4, 12.0, 12.0],
+    scale_vector = [0.4, 0.4, 0.4, 0.4],
     loss_weights = [1.5, -1.0, -0.0, -1.0, -1.0],
     p = 1,
     mu = 0.8,
